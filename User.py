@@ -30,11 +30,18 @@ class User:
         else:
             User.post_hist[self.name].append(message)
 
+    def remove_post(self, post_text):
+        for i,item in enumerate(User.post_hist[self.name]):
+            if post_text == item:
+                User.post_hist[self.name].pop(i)
+
     
 alice = User('alice', 'alice@email.com', 'asdlfkjaslkdfjsldf')
 alice.post = 'hi'
 alice.post = 'another'
 alice.post = 'three'
+print(alice.post)
+alice.remove_post('hi')
 print(alice.post)
 
 talulah = User('talulah', 'talulah@email.com', 'asdlfkjaslkdfjsldf')
